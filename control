@@ -1,0 +1,9 @@
+Package: com.xyaman.kori
+Name: Kori
+Version: 0.0.1
+Architecture: iphoneos-arm
+Description: An awesome MobileSubstrate tweak!
+Maintainer: Xyaman
+Author: Xyaman
+Section: Tweaks
+Depends: mobilesubstrate, ws.hbang.common (>= 1.17)
