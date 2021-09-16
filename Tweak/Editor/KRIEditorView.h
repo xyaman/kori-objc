@@ -2,7 +2,7 @@
 
 #import "KRIControlsView.h"
 
-@interface KRIEditorView : UIView
+@interface KRIEditorView : UIView <UICollectionViewDelegate, UICollectionViewDataSource>
 @property(nonatomic, retain) NSLayoutConstraint *topConstraint;
 
 // UI
@@ -10,7 +10,7 @@
 @property(nonatomic, retain) UIImageView *actionButton;
 @property(nonatomic, retain) UILabel *titleLabel;
 @property(nonatomic, retain) UICollectionView *collectionView;
-@property(nonatomic, retain) UICollectionViewLayout *collectionLayout;    
+@property(nonatomic, retain) UICollectionViewFlowLayout *collectionLayout;    
 
 // Controls
 @property(nonatomic, retain) KRIControlsView *controlsView;

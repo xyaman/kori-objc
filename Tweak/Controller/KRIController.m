@@ -63,6 +63,11 @@
     [self.editorView removeFromSuperview];
 }
 
+- (UIImage *) getSettingIcon:(KRISetting *)setting {
+    NSString *path = [NSString stringWithFormat:@"/Library/PreferenceBundles/KoriPreferences.bundle/Editor/%@.png", setting.key];
+    return [[UIImage imageWithContentsOfFile:path] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+}
+
 - (void) editSetting:(KRISetting *)setting newValue:(CGFloat)value {
     // Update the value on our preferences bundle
     [self.preferences setFloat:value forKey:setting.key];

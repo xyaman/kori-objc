@@ -9,6 +9,7 @@ void startEdit() {
     [[objc_getClass("SBCoverSheetPresentationManager") sharedInstance] setCoverSheetPresented:YES animated:YES withCompletion:nil];
 }
 
+// Main Notification center view controller
 %hook CSCoverSheetViewController
 - (void) viewDidLoad {
     %orig;

@@ -32,4 +32,5 @@
 - (void) startEditor;
 - (void) stopEditor;
 - (void) editSetting:(KRISetting *)setting newValue:(CGFloat)value;
+- (UIImage *) getSettingIcon:(KRISetting *)setting;
 @end
