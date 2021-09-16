@@ -7,7 +7,8 @@
 
 // UI
 @property(nonatomic, retain) UIView *blurView;
-@property(nonatomic, retain) UIImageView *actionButton;
+@property(nonatomic, retain) UIImageView *closeView;
+@property(nonatomic, retain) UIImageView *returnView;
 @property(nonatomic, retain) UILabel *titleLabel;
 @property(nonatomic, retain) UICollectionView *collectionView;
 @property(nonatomic, retain) UICollectionViewFlowLayout *collectionLayout;    

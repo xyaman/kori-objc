@@ -21,3 +21,22 @@
 +(nonnull SBCoverSheetPresentationManager *) sharedInstance;
 -(void)setCoverSheetPresented:(BOOL)arg1 animated:(BOOL)arg2 withCompletion:(nullable id)arg3 ;
 @end
+
+
+// Notifications History
+@interface NCNotificationListView : NSObject
+@property (nonatomic) BOOL revealed;
+@end
+
+@interface NCNotificationListSectionHeaderView : UIView
+@end
+
+// Older notifications
+@interface NCNotificationListSectionRevealHintView : UIView
+@end
+
+@interface NCNotificationListCoalescingHeaderCell : UIView
+@end
+
+@interface NCNotificationListCoalescingControlsCell : UIView
+@end

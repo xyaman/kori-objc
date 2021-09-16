@@ -7,6 +7,7 @@
 @interface KRIController : NSObject
 // Preferences
 @property(nonatomic, retain) HBPreferences *preferences;
+@property(nonatomic) BOOL disableNotificationsHistory;
 
 // Editable preferences (not available on tweak prefs)
 @property(nonatomic, retain) NSMutableArray<KRISetting *> *editableSettings;
@@ -31,6 +32,7 @@
 // Edit methods
 - (void) startEditor;
 - (void) stopEditor;
+- (CGFloat) getValueOfSetting:(KRISetting *)setting;
 - (void) editSetting:(KRISetting *)setting newValue:(CGFloat)value;
 - (UIImage *) getSettingIcon:(KRISetting *)setting;
 @end

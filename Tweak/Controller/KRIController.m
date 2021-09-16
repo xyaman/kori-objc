@@ -16,10 +16,12 @@
 - (instancetype) init {
     self = [super init];
 
-    self.editorView = [[KRIEditorView alloc] init];
+    // self.editorView = [[KRIEditorView alloc] init];
 
     // Load preferences and add observers
     self.preferences = [[HBPreferences alloc] initWithIdentifier:@"com.xyaman.koripreferences"];
+    [self.preferences registerBool:&_disableNotificationsHistory default:NO forKey:@"disableNotificationsHistory"];
+
     [self.preferences registerFloat:&_notificationsXOffset default:0 forKey:@"notificationsXOffset"];
     [self.preferences registerFloat:&_notificationsYOffset default:0 forKey:@"notificationsYOffset"];
     [self.preferences registerFloat:&_notificationsWidthOffset default:0 forKey:@"notificationsWidthOffset"];
@@ -41,6 +43,8 @@
 - (void) startEditor {
     if(self.isEditing || !self.presenterView) return;
     self.isEditing = YES;
+
+    self.editorView = [[KRIEditorView alloc] init];
 
     // Add our view to the presenter view
     [self.presenterView addSubview:self.editorView];
@@ -66,6 +70,10 @@
 - (UIImage *) getSettingIcon:(KRISetting *)setting {
     NSString *path = [NSString stringWithFormat:@"/Library/PreferenceBundles/KoriPreferences.bundle/Editor/%@.png", setting.key];
     return [[UIImage imageWithContentsOfFile:path] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+}
+
+- (CGFloat) getValueOfSetting:(KRISetting *)setting {
+    return [self.preferences floatForKey:setting.key];
 }
 
 - (void) editSetting:(KRISetting *)setting newValue:(CGFloat)value {

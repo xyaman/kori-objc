@@ -23,9 +23,10 @@
 
         if([KRIController sharedInstance].isEditing) {
             frame = self.originalFrame;
+        
+        } else {
+            self.originalFrame = frame;
         }
-
-        self.originalFrame = frame;
 
         frame.origin.x += [KRIController sharedInstance].notificationsXOffset;
         frame.origin.y += [KRIController sharedInstance].notificationsYOffset;
