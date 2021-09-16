@@ -30,5 +30,6 @@
 
 // Edit methods
 - (void) startEditor;
+- (void) stopEditor;
 - (void) editSetting:(KRISetting *)setting newValue:(CGFloat)value;
 @end

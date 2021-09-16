@@ -15,6 +15,12 @@ void startEdit() {
 
     [KRIController sharedInstance].presenterView = self.view;
 }
+
+- (void) viewDidDisappear:(BOOL)animated {
+    %orig;
+
+    [[KRIController sharedInstance] stopEditor];
+}
 %end
 
 %ctor {

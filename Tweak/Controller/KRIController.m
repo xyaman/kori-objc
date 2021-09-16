@@ -56,6 +56,13 @@
     ]];
 }
 
+- (void) stopEditor {
+    if(!self.isEditing) return;
+    self.isEditing = NO;
+
+    [self.editorView removeFromSuperview];
+}
+
 - (void) editSetting:(KRISetting *)setting newValue:(CGFloat)value {
     // Update the value on our preferences bundle
     [self.preferences setFloat:value forKey:setting.key];
