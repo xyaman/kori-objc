@@ -23,11 +23,21 @@
     [self.blurView.widthAnchor constraintEqualToAnchor:self.widthAnchor].active = YES;
     [self.blurView.heightAnchor constraintEqualToAnchor:self.heightAnchor].active = YES;
 
-    //         blurView.topAnchor.constraint(equalTo: topAnchor).isActive = true
-    //         blurView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
-    //         blurView.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
-    //         blurView.rightAnchor.constraint(equalTo: rightAnchor).isActive = true
+
+    // Gestures
+    UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePan:)];
+    [self addGestureRecognizer:pan];
 
     return self;
+}
+
+- (void) handlePan:(UIPanGestureRecognizer *)gesture {
+    CGFloat posY = [gesture locationInView:self.superview].y;
+    CGFloat maxY = UIScreen.mainScreen.bounds.size.height - self.frame.size.height;
+
+    [UIView animateWithDuration:0.2 animations:^{
+        self.topConstraint.constant = posY > maxY ? maxY : posY;
+        [self.superview layoutIfNeeded];
+    }];
 }
 @end

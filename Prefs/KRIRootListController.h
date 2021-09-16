@@ -1,5 +1,6 @@
-#import <Preferences/PSListController.h>
+#import <CepheiPrefs/HBRootListController.h>
+#import <CepheiPrefs/HBAppearanceSettings.h>
+#import <Cephei/HBRespringController.h>
 
-@interface KRIRootListController : PSListController
-
+@interface KRIRootListController : HBRootListController
 @end

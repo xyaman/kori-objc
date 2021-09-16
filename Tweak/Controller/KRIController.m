@@ -16,6 +16,8 @@
 - (instancetype) init {
     self = [super init];
 
+    self.editorView = [[KRIEditorView alloc] init];
+
     // Load preferences and add observers
     self.preferences = [[HBPreferences alloc] initWithIdentifier:@"com.xyaman.koripreferences"];
     [self.preferences registerFloat:&_notificationsXOffset default:0 forKey:@"notificationsXOffset"];
@@ -34,6 +36,24 @@
     ]];
 
     return self;
+}
+
+- (void) startEditor {
+    if(self.isEditing || !self.presenterView) return;
+    self.isEditing = YES;
+
+    // Add our view to the presenter view
+    [self.presenterView addSubview:self.editorView];
+    self.editorView.translatesAutoresizingMaskIntoConstraints = NO;
+
+    self.editorView.topConstraint = [self.editorView.topAnchor constraintEqualToAnchor:self.presenterView.topAnchor constant:0];
+
+    [NSLayoutConstraint activateConstraints:@[
+        self.editorView.topConstraint,
+        [self.editorView.heightAnchor constraintEqualToConstant:150],
+        [self.editorView.centerXAnchor constraintEqualToAnchor:self.presenterView.centerXAnchor],
+        [self.editorView.widthAnchor constraintEqualToAnchor:self.presenterView.widthAnchor constant:-20]
+    ]];
 }
 
 - (void) editSetting:(KRISetting *)setting newValue:(CGFloat)value {

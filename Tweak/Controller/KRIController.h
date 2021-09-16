@@ -2,6 +2,7 @@
 #import <Cephei/HBPreferences.h>
 
 #import "KRISetting.h"
+#import "../Editor/KRIEditorView.h"
 
 @interface KRIController : NSObject
 // Preferences
@@ -23,9 +24,11 @@
 
 // Edition
 @property(nonatomic) BOOL isEditing;
+@property(nonatomic, retain) KRIEditorView *editorView;
 
 + (instancetype) sharedInstance;
 
 // Edit methods
+- (void) startEditor;
 - (void) editSetting:(KRISetting *)setting newValue:(CGFloat)value;
 @end
